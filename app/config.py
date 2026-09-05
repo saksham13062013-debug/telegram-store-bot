@@ -3,12 +3,8 @@ Configuration Module
 """
 
 import os
-from dotenv import load_dotenv
 
-# Load environment variables
-load_dotenv()
-
-# Telegram Bot Configuration
+# Load environment variables from Railway
 BOT_TOKEN = os.getenv('BOT_TOKEN', '')
 if not BOT_TOKEN:
     raise ValueError("BOT_TOKEN not found in environment variables")
@@ -29,11 +25,11 @@ BOT_NAME = "ToolOraX Store Bot"
 BOT_DESCRIPTION = "Your favorite e-commerce bot on Telegram"
 
 # Currency
-CURRENCY = "$"
+CURRENCY = os.getenv('CURRENCY', '$')
 CURRENCY_CODE = "USD"
 
 # Pagination
-PRODUCTS_PER_PAGE = 5
+PRODUCTS_PER_PAGE = int(os.getenv('PRODUCTS_PER_PAGE', '5'))
 ORDERS_PER_PAGE = 10
 
 # Timeouts
